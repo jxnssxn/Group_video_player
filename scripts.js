@@ -1,3 +1,6 @@
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/crowdpleaser/video/upload';
+const CLOUDINARY_UPLOAD_PRESET = 'kvcunjt8';
+
 // elements
 const player = document.querySelector('.player');
 const video = player.querySelector('.viewer');
@@ -6,6 +9,9 @@ const progressBar = player.querySelector('.progress__filled');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
+
+const videosList = document.querySelector(".videos");
+const videos = JSON.parse(localStorage.getItem("videos")) || [];
 
 // function
 
@@ -58,3 +64,68 @@ progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
+
+
+// Video Uploading 
+
+const fileUpload = document.getElementById('file-upload');
+
+fileUpload.addEventListener('submit', function(e) {
+  console.log(e);
+  e.preventDefault();
+
+  const file = e.target[0].files[0];
+  var formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+ 
+  axios({
+    url: CLOUDINARY_URL,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    data: formData
+  }).then(res => {
+    console.log(res);
+    const text = res.data.secure_url;
+    const newVideo = {
+      text
+    };
+    videos.push(newVideo);
+    populateList(videos, videosList);
+    localStorage.setItem("videos", JSON.stringify(videos));
+    this.reset();
+  }).catch(err => {
+    console.log(err);
+  });
+});
+
+function populateList(videos = [], videosList) {
+  videosList.innerHTML = videos
+    .map((video1, i) => {
+      return `
+  <li>
+    <video data-index=${i} id="video${i}" src="${videos[i].text}"></video>
+  </li>
+`;
+    })
+    .join("");
+}
+
+function chooseVideo(e) {
+  if(!e.target.matches("video")) return; // skip this unless it's an input
+  const el = e.target;
+  console.log(el);
+  video.src = el.src;
+  // const text = el.dataset.text;
+  // video.src = text;
+}
+
+videosList.addEventListener("click", chooseVideo);
+
+
+populateList(videos, videosList);
+
+
+
