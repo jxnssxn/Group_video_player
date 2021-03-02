@@ -1,6 +1,8 @@
-const signupForm = document.getElementById("signup");
 const loginForm = document.getElementById("login");
+const logout = document.getElementById("logout");
+const signupForm = document.getElementById("signup");
 
+// Login
 function onLogin(e) {
   e.preventDefault();
   // console.log(this);
@@ -25,6 +27,40 @@ function onLogin(e) {
 
 loginForm.addEventListener("submit", onLogin);
 
+// Logout
+
+function onLogout(e) {
+  localStorage.removeItem("jwt")
+}
+logout.addEventListener("click", onLogout);
+
+
+
+// Signup
+
+function onSignup(e) {
+  e.preventDefault();
+  // console.log(this);
+  const userSignup = {
+    email: e.target[0].value,
+    password: e.target[1].value,
+    password_confirmation: e.target[2].value,
+  };
+  
+  const newUser = fetch("http://localhost:3000/api/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userSignup)
+  }).then(response => response.json()).then(data => { 
+    console.log(data);
+    this.reset();
+  }).catch(err => console.log(err));
+
+}
+
+signupForm.addEventListener("submit", onSignup);
 
 
 

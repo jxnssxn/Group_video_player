@@ -13,22 +13,16 @@
       <h4>Signup</h4>
       <form id="signup">
         <label for="signup-email">Email:</label>
-        <input type="text" name="signup-email" id="signup-email" required />
+        <input type="text" name="signup-email" id="signup-email" />
         <br />
         <label for="signup-password">Password:</label>
-        <input
-          type="password"
-          name="signup-password"
-          id="signup-password"
-          required
-        />
+        <input type="password" name="signup-password" id="signup-password" />
         <br />
         <label for="signup-password-confirmation">Password Confirmation:</label>
         <input
           type="password"
           name="signup-password-confirmation"
           id="signup-password-confirmation"
-          required
         />
         <br />
         <button type="submit" id="on-signup">Signup</button>
@@ -40,18 +34,16 @@
       <h4>Login</h4>
       <form id="login">
         <label for="login-email">Email:</label>
-        <input type="text" name="login-email" id="login-email" required />
+        <input type="text" name="login-email" id="login-email" />
         <br />
         <label for="login-password">Password:</label>
-        <input
-          type="password"
-          name="login-password"
-          id="login-password"
-          required
-        />
+        <input type="password" name="login-password" id="login-password" />
         <br />
         <button type="submit" id="on-login">Login</button>
       </form>
+    </div>
+    <div class="logout">
+      <button id="logout">Logout</button>
     </div>
     <br />
     <br />
@@ -90,7 +82,7 @@
         <h2>My Videos</h2>
 
         <form id="file-upload">
-          <input type="file" name="video" placeholder="Video Name" required />
+          <input type="file" name="video" placeholder="Video Name" />
           <input type="submit" value="Upload" />
         </form>
       </div>

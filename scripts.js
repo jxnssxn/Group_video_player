@@ -13,6 +13,21 @@ const ranges = player.querySelectorAll('.player__slider');
 const videosList = document.querySelector(".videos");
 const videos = JSON.parse(localStorage.getItem("videos")) || [];
 
+function debounce(func, wait = 2000, immediate = true) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
 // function
 
 function togglePlay() {
@@ -70,7 +85,7 @@ progress.addEventListener('mouseup', () => mousedown = false);
 
 const fileUpload = document.getElementById('file-upload');
 
-fileUpload.addEventListener('submit', function(e) {
+function cloudinaryUpload(e) {
   console.log(e);
   e.preventDefault();
 
@@ -99,7 +114,10 @@ fileUpload.addEventListener('submit', function(e) {
   }).catch(err => {
     console.log(err);
   });
-});
+
+}
+
+fileUpload.addEventListener('submit', debounce(cloudinaryUpload));
 
 function populateList(videos = [], videosList) {
   videosList.innerHTML = videos
