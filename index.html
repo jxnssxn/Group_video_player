@@ -5,10 +5,56 @@
     <title>HTML Video Player</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <header>
+  <div class="header">
     <h1>YourTube</h1>
-  </header>
+  </div>
   <body>
+    <div class="signup">
+      <h4>Signup</h4>
+      <form id="signup">
+        <label for="signup-email">Email:</label>
+        <input type="text" name="signup-email" id="signup-email" required />
+        <br />
+        <label for="signup-password">Password:</label>
+        <input
+          type="password"
+          name="signup-password"
+          id="signup-password"
+          required
+        />
+        <br />
+        <label for="signup-password-confirmation">Password Confirmation:</label>
+        <input
+          type="password"
+          name="signup-password-confirmation"
+          id="signup-password-confirmation"
+          required
+        />
+        <br />
+        <button type="submit" id="on-signup">Signup</button>
+      </form>
+    </div>
+    <br />
+    <br />
+    <div class="login">
+      <h4>Login</h4>
+      <form id="login">
+        <label for="login-email">Email:</label>
+        <input type="text" name="login-email" id="login-email" required />
+        <br />
+        <label for="login-password">Password:</label>
+        <input
+          type="password"
+          name="login-password"
+          id="login-password"
+          required
+        />
+        <br />
+        <button type="submit" id="on-login">Login</button>
+      </form>
+    </div>
+    <br />
+    <br />
     <div class="player">
       <video class="player__video viewer" src="652333414.mp4"></video>
 
@@ -53,6 +99,7 @@
         <li>Loading Videos...</li>
       </ul>
     </div>
+    <script src="backendBs.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts.js"></script>
   </body>

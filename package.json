@@ -1,0 +1,24 @@
+{
+  "name": "group_video_player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cloudinary-core": "^2.11.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "open http://localhost:8080 && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jxnssxn/Group_video_player.git"
+  },
+  "author": "winstonbarbe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jxnssxn/Group_video_player/issues"
+  },
+  "homepage": "https://github.com/jxnssxn/Group_video_player#readme"
+}
