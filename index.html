@@ -2,97 +2,173 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>HTML Video Player</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="./styles/video-player.css" /> -->
+    <link rel="stylesheet" href="./styles/new-main.css" />
+
+    <title>Fetching Sample</title>
   </head>
-  <div class="header">
-    <h1>YourTube</h1>
-  </div>
   <body>
-    <div class="signup">
-      <h4>Signup</h4>
-      <form id="signup">
-        <label for="signup-email">Email:</label>
-        <input type="text" name="signup-email" id="signup-email" />
-        <br />
-        <label for="signup-password">Password:</label>
-        <input type="password" name="signup-password" id="signup-password" />
-        <br />
-        <label for="signup-password-confirmation">Password Confirmation:</label>
-        <input
-          type="password"
-          name="signup-password-confirmation"
-          id="signup-password-confirmation"
-        />
-        <br />
-        <button type="submit" id="on-signup">Signup</button>
-      </form>
-    </div>
-    <br />
-    <br />
-    <div class="login">
-      <h4>Login</h4>
-      <form id="login">
-        <label for="login-email">Email:</label>
-        <input type="text" name="login-email" id="login-email" />
-        <br />
-        <label for="login-password">Password:</label>
-        <input type="password" name="login-password" id="login-password" />
-        <br />
-        <button type="submit" id="on-login">Login</button>
-      </form>
-    </div>
-    <div class="logout">
-      <button id="logout">Logout</button>
-    </div>
-    <br />
-    <br />
-    <div class="player">
-      <video class="player__video viewer" src="652333414.mp4"></video>
-
-      <div class="player__controls">
-        <div class="progress">
-          <div class="progress__filled"></div>
+    <!-- Page Wrapper -->
+    <div class="wrapper">
+      <!-- Nav -->
+      <div class="nav">
+        <!-- Nav Header -->
+        <div class="nav-header">
+          <h1>GVP</h1>
         </div>
-        <button class="player__button toggle" title="Toggle Play">►</button>
-        <input
-          type="range"
-          name="volume"
-          class="player__slider"
-          min="0"
-          max="1"
-          step="0.05"
-          value="1"
-        />
-        <input
-          type="range"
-          name="playbackRate"
-          class="player__slider"
-          min="0.5"
-          max="2"
-          step="0.1"
-          value="1"
-        />
-        <button data-skip="-10" class="player__button">« 10s</button>
-        <button data-skip="25" class="player__button">25s »</button>
-      </div>
-    </div>
-    <div class="library">
-      <div class="library-header">
-        <h2>My Videos</h2>
+        <!-- / EndNav Header -->
+        <!-- Logout -->
+        <div class="logout nav-element">
+          <h4 id="on-logout">Logout</h4>
+        </div>
+        <!-- Logout end -->
 
-        <form id="file-upload">
-          <input type="file" name="video" placeholder="Video Name" />
-          <input type="submit" value="Upload" />
-        </form>
+        <!-- Login -->
+        <div class="dropdown login nav-element">
+          <h4>Login</h4>
+          <form class="dropdown-content" id="login">
+            <label for="login-email" class="inputs">Email:</label>
+            <input
+              type="text"
+              name="login-email"
+              id="login-email"
+              class="inputs"
+            />
+            <br />
+            <label for="login-password" class="inputs">Password:</label>
+            <input
+              type="password"
+              name="login-password"
+              id="login-password"
+              class="inputs"
+            />
+            <br />
+            <br />
+            <button type="submit" id="on-login" class="btn">Login</button>
+          </form>
+        </div>
+        <!-- Login end -->
+
+        <!-- Sign up -->
+        <div class="signup dropdown nav-element">
+          <h4>Signup</h4>
+          <form class="dropdown-content" id="signup">
+            <label for="signup-name" class="inputs">Name:</label>
+            <input
+              type="text"
+              name="signup-name"
+              id="signup-name"
+              class="inputs"
+            />
+            <br />
+            <label for="signup-email" class="inputs">Email:</label>
+            <input
+              type="text"
+              name="signup-email"
+              id="signup-email"
+              class="inputs"
+            />
+            <br />
+            <label for="signup-password" class="inputs">Password:</label>
+            <input
+              type="password"
+              name="signup-password"
+              id="signup-password"
+              class="inputs"
+            />
+            <br />
+            <label for="signup-password-confirmation" class="inputs"
+              >Password Confirm:</label
+            >
+            <input
+              type="password"
+              name="signup-password-confirmation"
+              id="signup-password-confirmation"
+              class="inputs"
+            />
+            <br />
+            <br />
+            <button type="submit" id="on-signup" class="btn">Signup</button>
+          </form>
+        </div>
+        <!-- Sign up end -->
       </div>
-      <p></p>
-      <ul class="videos">
-        <li>Loading Videos...</li>
-      </ul>
+      <!-- / End Nav -->
+
+      <!-- Main -->
+      <div class="main">
+        <!-- Video PLayer -->
+        <div class="column player">
+          <video class="player__video viewer" src="652333414.mp4"></video>
+
+          <div class="player__controls">
+            <div class="progress">
+              <div class="progress__filled"></div>
+            </div>
+            <button class="player__button toggle" title="Toggle Play">►</button>
+            <input
+              type="range"
+              name="volume"
+              class="player__slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="1"
+            />
+            <input
+              type="range"
+              name="playbackRate"
+              class="player__slider"
+              min="0.5"
+              max="2"
+              step="0.1"
+              value="1"
+            />
+            <button data-skip="-10" class="player__button">« 10s</button>
+            <button data-skip="25" class="player__button">25s »</button>
+          </div>
+        </div>
+        <!-- Video PLayer End -->
+
+        <!-- Side Bar -->
+        <div class="column sidebar">
+          <!-- Side Bar Nav -->
+          <div class="sidebar-nav">
+            <div class="sidebar-nav-header">
+              <h4>Library</h4>
+              <!-- Video Upload -->
+              <div class="upload">
+                <form id="upload">
+                  <input type="file" name="file" id="file" />
+                  <!-- <button type="submit" id="on-upload" class="btn">Upload</button> -->
+                </form>
+              </div>
+              <!-- Video Upload end -->
+            </div>
+          </div>
+          <!--/ EndSide Bar Nav -->
+          <!-- Library -->
+          <div class="library">
+            <div class="videos">
+              <ul id="videos"></ul>
+            </div>
+          </div>
+
+          <!-- End Library -->
+        </div>
+
+        <!-- End Side Bar -->
+      </div>
+
+      <!-- End Main -->
     </div>
-    <script src="backendBs.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="scripts.js"></script>
+
+    <!-- End Page Wrapper -->
+    <!-- scripts -->
+    <script type="module" src="./scripts/main.js"></script>
+    <script src="./scripts/videoPlayer.js"></script>
+    <!-- scripts end -->
   </body>
 </html>
